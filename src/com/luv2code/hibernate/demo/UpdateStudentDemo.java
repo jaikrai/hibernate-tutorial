@@ -21,39 +21,22 @@ public class UpdateStudentDemo {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			// use the session object to save java object
-			
-			// create a student object
-			System.out.println("Creating new studen object.... ");
-			Student tempStudent = new Student("Daffy", "Duck", "daffy@email.com");
-			
-			// start a transaction 
-			session.beginTransaction();
-			
-			// save the student object
-			System.out.println("Saving student.... ");
-			System.out.println(tempStudent);
-			session.save(tempStudent);
-			
-			// commit transaction 
-			session.getTransaction().commit();
-			
-			// MY NEW CODE 
-			
-			// find out the student's id: primary key 
-			System.out.println("Saved students. Generted id: "+tempStudent.getId());
+			int studentId = 1;
 			
 			// now get a new session and start transaction 
 			session = factory.getCurrentSession();
 			session.beginTransaction();
 			
-			// retrieve student based on the id: primary key 
-			System.out.println("\nGetting student with id: "+tempStudent.getId());
+			// retrieve student based on the if: primary key
+			System.out.println("\nGetting student with id: " +studentId);
 			
-			Student myStudnet = session.get(Student.class, tempStudent.getId());
+			Student myStudent = session.get(Student.class, studentId);
 			
-			System.out.println("Get complete: "+myStudnet);
+			System.out.println("Updating student.....");
+			myStudent.setFirstName("paul");
+			
 			// commit the transaction
+			session.getTransaction().commit();
 			
 			System.out.println("Done!");
 			
