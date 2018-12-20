@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import com.luv2code.hibernate.demo.entity.Student;
 
 
-public class UpdateStudentDemo {
+public class DeleteStudentDemo {
 
 	public static void main(String[] args) {
 		
@@ -32,9 +32,8 @@ public class UpdateStudentDemo {
 			
 			Student myStudent = session.get(Student.class, studentId);
 			
-			// delete the student 
-			System.out.println("Deleting student: "+ myStudent);
-			session.delete(myStudent);
+			System.out.println("Updating student.....");
+			myStudent.setFirstName("paul");
 			
 			// commit the transaction
 			session.getTransaction().commit();
